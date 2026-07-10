@@ -1,0 +1,18 @@
+! Adult and gambling block rules for AdGuard Home custom filtering.
+||pornhub.com^
+||xvideos.com^
+||xnxx.com^
+||redtube.com^
+||youporn.com^
+||onlyfans.com^
+||chaturbate.com^
+||stripchat.com^
+||livejasmin.com^
+||bet365.com^
+||stake.com^
+||1xbet.com^
+||bk8.com^
+||fun88.com^
+||m88.com^
+||188bet.com^
+/(^|[.-])(porn|sex|xxx|adult|casino|betting|gambling|bookmaker)[0-9-]*\./

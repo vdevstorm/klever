@@ -1,0 +1,27 @@
+! Strict Roblox block for AdGuard Home custom filtering.
+||roblox.com^
+||www.roblox.com^
+||api.roblox.com^
+||auth.roblox.com^
+||accountsettings.roblox.com^
+||games.roblox.com^
+||gamejoin.roblox.com^
+||assetdelivery.roblox.com^
+||thumbnails.roblox.com^
+||users.roblox.com^
+||friends.roblox.com^
+||chat.roblox.com^
+||voice.roblox.com^
+||presence.roblox.com^
+||economy.roblox.com^
+||groups.roblox.com^
+||catalog.roblox.com^
+||develop.roblox.com^
+||create.roblox.com^
+||rbxcdn.com^
+||rbxcdn.roblox.com^
+||robloxcdn.com^
+||robloxlabs.com^
+||rbx.com^
+/(^|[.-])(roblox|rbxcdn|robloxcdn|rbx)[0-9-]*\./
+

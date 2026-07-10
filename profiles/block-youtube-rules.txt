@@ -1,0 +1,18 @@
+! Strict YouTube block for AdGuard Home custom filtering.
+||youtube.com^
+||www.youtube.com^
+||m.youtube.com^
+||music.youtube.com^
+||kids.youtube.com^
+||studio.youtube.com^
+||youtu.be^
+||youtube-nocookie.com^
+||youtube.googleapis.com^
+||youtubei.googleapis.com^
+||youtubeembeddedplayer.googleapis.com^
+||ytimg.com^
+||i.ytimg.com^
+||s.ytimg.com^
+||googlevideo.com^
+/(^|[.-])(youtube|ytimg|googlevideo|youtu\.be)[0-9-]*\./
+

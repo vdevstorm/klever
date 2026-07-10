@@ -1,0 +1,128 @@
+# Optional AdGuard Home profile: child-safe strict mode.
+# Blocks adult/gambling/malware/phishing/bypass lists plus YouTube and Roblox.
+
+config:
+  adGuardHome:
+    filters:
+      - enabled: true
+        url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+        name: AdGuard DNS filter
+        id: 1
+      - enabled: true
+        url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+        name: AdAway Default Blocklist
+        id: 2
+      - enabled: true
+        url: https://big.oisd.nl
+        name: OISD Big
+        id: 10
+      - enabled: true
+        url: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
+        name: HaGeZi Multi Pro
+        id: 11
+      - enabled: true
+        url: https://nsfw.oisd.nl/
+        name: OISD NSFW
+        id: 100
+      - enabled: true
+        url: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/nsfw.txt
+        name: HaGeZi NSFW
+        id: 101
+      - enabled: true
+        url: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.txt
+        name: HaGeZi Gambling
+        id: 102
+      - enabled: true
+        url: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/doh-vpn-proxy-bypass.txt
+        name: HaGeZi DoH VPN Proxy Bypass
+        id: 103
+      - enabled: true
+        url: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/nosafesearch.txt
+        name: HaGeZi No SafeSearch Bypass
+        id: 104
+      - enabled: true
+        url: https://urlhaus.abuse.ch/downloads/hostfile/
+        name: URLhaus Malware Hostfile
+        id: 105
+      - enabled: true
+        url: https://phishing.army/download/phishing_army_blocklist_extended.txt
+        name: Phishing Army Extended
+        id: 106
+    user_rules:
+      - "||pornhub.com^"
+      - "||xvideos.com^"
+      - "||xnxx.com^"
+      - "||redtube.com^"
+      - "||youporn.com^"
+      - "||onlyfans.com^"
+      - "||chaturbate.com^"
+      - "||stripchat.com^"
+      - "||livejasmin.com^"
+      - "||bet365.com^"
+      - "||stake.com^"
+      - "||1xbet.com^"
+      - "||bk8.com^"
+      - "||fun88.com^"
+      - "||m88.com^"
+      - "||188bet.com^"
+      - "||youtube.com^"
+      - "||www.youtube.com^"
+      - "||m.youtube.com^"
+      - "||music.youtube.com^"
+      - "||kids.youtube.com^"
+      - "||studio.youtube.com^"
+      - "||youtu.be^"
+      - "||youtube-nocookie.com^"
+      - "||youtube.googleapis.com^"
+      - "||youtubei.googleapis.com^"
+      - "||youtubeembeddedplayer.googleapis.com^"
+      - "||ytimg.com^"
+      - "||i.ytimg.com^"
+      - "||s.ytimg.com^"
+      - "||googlevideo.com^"
+      - "||roblox.com^"
+      - "||www.roblox.com^"
+      - "||api.roblox.com^"
+      - "||auth.roblox.com^"
+      - "||accountsettings.roblox.com^"
+      - "||games.roblox.com^"
+      - "||gamejoin.roblox.com^"
+      - "||assetdelivery.roblox.com^"
+      - "||thumbnails.roblox.com^"
+      - "||users.roblox.com^"
+      - "||friends.roblox.com^"
+      - "||chat.roblox.com^"
+      - "||voice.roblox.com^"
+      - "||presence.roblox.com^"
+      - "||economy.roblox.com^"
+      - "||groups.roblox.com^"
+      - "||catalog.roblox.com^"
+      - "||develop.roblox.com^"
+      - "||create.roblox.com^"
+      - "||rbxcdn.com^"
+      - "||rbxcdn.roblox.com^"
+      - "||robloxcdn.com^"
+      - "||robloxlabs.com^"
+      - "||rbx.com^"
+      - "/(^|[.-])(porn|sex|xxx|adult|casino|betting|gambling|bookmaker)[0-9-]*\\./"
+      - "/(^|[.-])(youtube|ytimg|googlevideo|youtu\\.be|roblox|rbxcdn|robloxcdn|rbx)[0-9-]*\\./"
+    filtering:
+      protection_enabled: true
+      filtering_enabled: true
+      parental_enabled: true
+      safebrowsing_enabled: true
+      safe_search:
+        enabled: true
+        bing: true
+        duckduckgo: true
+        ecosia: true
+        google: true
+        pixabay: true
+        yandex: true
+        youtube: true
+      blocked_services:
+        schedule:
+          time_zone: Asia/Ho_Chi_Minh
+        ids: []
+      filters_update_interval: 24
+
