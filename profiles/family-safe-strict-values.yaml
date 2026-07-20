@@ -80,6 +80,23 @@ config:
       - "||i.ytimg.com^"
       - "||s.ytimg.com^"
       - "||googlevideo.com^"
+      - "||tiktok.com^"
+      - "||www.tiktok.com^"
+      - "||m.tiktok.com^"
+      - "||vm.tiktok.com^"
+      - "||vt.tiktok.com^"
+      - "||tiktokcdn.com^"
+      - "||tiktokv.com^"
+      - "||tiktokcdn-us.com^"
+      - "||musical.ly^"
+      - "||byteoversea.com^"
+      - "||ibytedtos.com^"
+      - "||ibyteimg.com^"
+      - "||snssdk.com^"
+      - "||bytedance.com^"
+      - "||bytecdn.cn^"
+      - "||byteimg.com^"
+      - "||bytednsdoc.com^"
       - "||roblox.com^"
       - "||www.roblox.com^"
       - "||api.roblox.com^"
@@ -105,7 +122,7 @@ config:
       - "||robloxlabs.com^"
       - "||rbx.com^"
       - "/(^|[.-])(porn|sex|xxx|adult|casino|betting|gambling|bookmaker)[0-9-]*\\./"
-      - "/(^|[.-])(youtube|ytimg|googlevideo|youtu\\.be|roblox|rbxcdn|robloxcdn|rbx)[0-9-]*\\./"
+      - "/(^|[.-])(youtube|ytimg|googlevideo|youtu\\.be|tiktok|tiktokcdn|tiktokv|musical\\.ly|byteoversea|ibytedtos|ibyteimg|snssdk|bytedance|bytecdn|byteimg|bytednsdoc|roblox|rbxcdn|robloxcdn|rbx)[0-9-]*\\./"
     filtering:
       protection_enabled: true
       filtering_enabled: true
@@ -125,4 +142,3 @@ config:
           time_zone: Asia/Ho_Chi_Minh
         ids: []
       filters_update_interval: 24
-

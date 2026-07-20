@@ -9,10 +9,11 @@ These files are optional policy profiles for AdGuard Home. They are not loaded b
   protection lists plus safe search settings.
 - `block-youtube-roblox-values.yaml`: strict DNS block for YouTube and Roblox.
 - `family-safe-strict-values.yaml`: combines adult/malware protection with strict
-  YouTube and Roblox blocking.
+  YouTube, TikTok, and Roblox blocking.
 - `family-adult-gambling-rules.txt`: adult and gambling rules as a standalone
   DNS blocklist filter.
 - `block-youtube-rules.txt`: copy/paste rules for AdGuard Home custom filtering.
+- `block-tiktok-rules.txt`: copy/paste rules for AdGuard Home custom filtering.
 - `block-roblox-rules.txt`: copy/paste rules for AdGuard Home custom filtering.
 
 ## Helm usage
@@ -38,6 +39,7 @@ files. In AdGuard Home, open **Filters -> DNS blocklists** to enable/disable:
 
 - `Family Adult Gambling Rules`
 - `Block YouTube Strict`
+- `Block TikTok Strict`
 - `Block Roblox Strict`
 
 ## Notes

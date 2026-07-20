@@ -1,0 +1,21 @@
+! Strict TikTok block for AdGuard Home custom filtering.
+||tiktok.com^
+||www.tiktok.com^
+||m.tiktok.com^
+||vm.tiktok.com^
+||vt.tiktok.com^
+||tiktokcdn.com^
+||tiktokv.com^
+||tiktokcdn-us.com^
+||tiktokcdn-us.com.c.footprint.net^
+||tiktokcdn.com.c.worldfcdn.com^
+||musical.ly^
+||byteoversea.com^
+||ibytedtos.com^
+||ibyteimg.com^
+||snssdk.com^
+||bytedance.com^
+||bytecdn.cn^
+||byteimg.com^
+||bytednsdoc.com^
+/(^|[.-])(tiktok|tiktokcdn|tiktokv|musical\.ly|byteoversea|ibytedtos|ibyteimg|snssdk|bytedance|bytecdn|byteimg|bytednsdoc)[0-9-]*\./
