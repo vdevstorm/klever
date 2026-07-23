@@ -18,14 +18,18 @@
 
       const scope = "veyplay-youtube-player";
       const query = new URLSearchParams(window.location.search);
-      const videoId = query.get("videoId") || "";
+      let currentVideoId = query.get("videoId") || "";
       const autoplay = query.get("autoplay") === "1";
       const startSeconds = Math.max(0, Number(query.get("start")) || 0);
-      const initialSpeed = Math.max(0.25, Math.min(2, Number(query.get("speed")) || 1));
+      let desiredSpeed = Math.max(0.25, Math.min(2, Number(query.get("speed")) || 1));
       let player;
       let stateTimer;
 
-      if (!/^[A-Za-z0-9_-]{6,20}$/.test(videoId)) return;
+      function isValidVideoId(value) {
+        return /^[A-Za-z0-9_-]{6,20}$/.test(value);
+      }
+
+      if (!isValidVideoId(currentVideoId)) return;
 
       function send(payload) {
         window.parent.postMessage({ scope, ...payload }, "*");
@@ -38,15 +42,44 @@
           state: player.getPlayerState(),
           position: player.getCurrentTime ? player.getCurrentTime() : 0,
           duration: player.getDuration ? player.getDuration() : 0,
+          videoId: currentVideoId,
           error: error || null
         });
+      }
+
+      function applyDesiredSpeed() {
+        if (player && typeof player.setPlaybackRate === "function") {
+          player.setPlaybackRate(desiredSpeed);
+        }
+      }
+
+      function loadVideo(value) {
+        const nextVideoId = String(value && value.videoId || "");
+        if (!player || !isValidVideoId(nextVideoId)) return;
+
+        const nextStart = Math.max(0, Number(value.start) || 0);
+        desiredSpeed = Math.max(0.25, Math.min(2, Number(value.speed) || 1));
+        currentVideoId = nextVideoId;
+        send({
+          type: "state",
+          state: 3,
+          position: nextStart,
+          duration: 0,
+          videoId: currentVideoId,
+          error: null
+        });
+
+        const request = { videoId: currentVideoId, startSeconds: nextStart };
+        if (value.autoplay) player.loadVideoById(request);
+        else player.cueVideoById(request);
+        applyDesiredSpeed();
       }
 
       window.onYouTubeIframeAPIReady = () => {
         player = new YT.Player("player", {
           width: "100%",
           height: "100%",
-          videoId,
+          videoId: currentVideoId,
           playerVars: {
             playsinline: 1,
             rel: 0,
@@ -59,16 +92,19 @@
           events: {
             onReady: event => {
               if (startSeconds > 0) event.target.seekTo(startSeconds, true);
-              event.target.setPlaybackRate(initialSpeed);
+              applyDesiredSpeed();
               if (autoplay) event.target.playVideo();
               const rates = event.target.getAvailablePlaybackRates
                 ? event.target.getAvailablePlaybackRates()
                 : [];
-              send({ type: "capabilities", playbackRates: rates, canSeek: true, canMute: true });
+              send({ type: "capabilities", videoId: currentVideoId, playbackRates: rates, canSeek: true, canMute: true });
               publish();
               stateTimer = window.setInterval(() => publish(), 1000);
             },
-            onStateChange: () => publish(),
+            onStateChange: event => {
+              if (event.data === 1 || event.data === 5) applyDesiredSpeed();
+              publish();
+            },
             onError: event => publish(`YouTube không thể phát video này (mã ${event.data}).`)
           }
         });
@@ -79,11 +115,15 @@
         if (event.source !== window.parent || !message || message.scope !== scope || !player) return;
 
         switch (message.command) {
+          case "load": loadVideo(message.value); break;
           case "play": player.playVideo(); break;
           case "pause": player.pauseVideo(); break;
           case "stop": player.stopVideo(); break;
           case "seek": player.seekTo(Math.max(0, Number(message.value) || 0), true); break;
-          case "speed": player.setPlaybackRate(Math.max(0.25, Math.min(2, Number(message.value) || 1))); break;
+          case "speed":
+            desiredSpeed = Math.max(0.25, Math.min(2, Number(message.value) || 1));
+            applyDesiredSpeed();
+            break;
           case "mute": message.value ? player.mute() : player.unMute(); break;
           case "volume": player.setVolume(Math.max(0, Math.min(100, Number(message.value) || 0))); break;
           case "destroy":
