@@ -20,6 +20,7 @@
       const query = new URLSearchParams(window.location.search);
       let currentVideoId = query.get("videoId") || "";
       const autoplay = query.get("autoplay") === "1";
+      let loopPlayback = query.get("loop") === "1";
       const startSeconds = Math.max(0, Number(query.get("start")) || 0);
       let desiredSpeed = Math.max(0.25, Math.min(2, Number(query.get("speed")) || 1));
       let player;
@@ -59,6 +60,7 @@
 
         const nextStart = Math.max(0, Number(value.start) || 0);
         desiredSpeed = Math.max(0.25, Math.min(2, Number(value.speed) || 1));
+        loopPlayback = Boolean(value.loop);
         currentVideoId = nextVideoId;
         send({
           type: "state",
@@ -102,6 +104,11 @@
               stateTimer = window.setInterval(() => publish(), 1000);
             },
             onStateChange: event => {
+              if (event.data === 0 && loopPlayback) {
+                event.target.seekTo(0, true);
+                event.target.playVideo();
+                return;
+              }
               if (event.data === 1 || event.data === 5) applyDesiredSpeed();
               publish();
             },
