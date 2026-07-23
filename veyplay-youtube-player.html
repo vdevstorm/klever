@@ -94,6 +94,17 @@
         }
       });
 
+      function pauseForBackground() {
+        if (!player || typeof player.pauseVideo !== "function") return;
+        player.pauseVideo();
+        publish();
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) pauseForBackground();
+      });
+      window.addEventListener("pagehide", pauseForBackground);
+
       const api = document.createElement("script");
       api.src = "https://www.youtube.com/iframe_api";
       api.async = true;
