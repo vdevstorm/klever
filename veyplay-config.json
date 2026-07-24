@@ -1,5 +1,9 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-07-23T00:00:00Z",
-  "youtubeComplianceMode": true
+  "updatedAtUtc": "2026-07-24T00:00:00Z",
+  "youtubeComplianceMode": true,
+  "youtubeContentEnabled": true,
+  "youtubeDataApiEnabled": true,
+  "guestYouTubeContentEnabled": true,
+  "guestYouTubeDataApiEnabled": true
 }

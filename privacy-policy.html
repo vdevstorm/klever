@@ -78,7 +78,7 @@
       <p>Dữ liệu chỉ được chia sẻ với platform/store, YouTube/Google, nhà cung cấp quảng cáo, nhà cung cấp hạ tầng hoặc cơ quan có thẩm quyền khi cần cho mục đích nêu trên. Các bên này có thể xử lý dữ liệu ngoài quốc gia của bạn và áp dụng biện pháp chuyển dữ liệu theo luật hiện hành.</p>
       <ul>
         <li>Dữ liệu local/cache: tới khi bạn xóa trong app hoặc gỡ app.</li>
-        <li>OAuth token: tới khi sign out, revoke hoặc hệ điều hành xóa secure storage.</li>
+        <li>OAuth token và tài khoản đã lưu: sign out chỉ chuyển về Guest và giữ token/account trên thiết bị để dùng lại; Remove account hoặc revoke sẽ xóa token/account.</li>
         <li>Consent preference: tới khi bạn đổi lựa chọn hoặc reset app.</li>
         <li>Store và ad network: theo thời hạn trong chính sách của từng nhà cung cấp.</li>
         <li>Email hỗ trợ: trong thời gian cần giải quyết yêu cầu và nghĩa vụ lưu hồ sơ hợp pháp.</li>
@@ -88,7 +88,7 @@
       <ul>
         <li>Mở Settings → Cài đặt quyền riêng tư quảng cáo để xem lại consent; trên iOS, đổi Tracking trong System Settings.</li>
         <li>Reset/delete Advertising ID trong cài đặt hệ điều hành khi platform hỗ trợ.</li>
-        <li>Sign out YouTube và revoke VeyPlay tại <a href="https://myaccount.google.com/permissions">Google Account Permissions</a>.</li>
+        <li>Sign out YouTube để chuyển về Guest và giữ tài khoản đã lưu; chọn Remove account trong app hoặc revoke VeyPlay tại <a href="https://myaccount.google.com/permissions">Google Account Permissions</a> để xóa quyền/token.</li>
         <li>Xóa history, favorites, playlists, cache, media nhập hoặc toàn bộ app data; xem <a href="data-deletion.html">Hướng dẫn xóa dữ liệu</a>.</li>
         <li>Yêu cầu truy cập, sửa, xóa, hạn chế, phản đối hoặc nhận bản sao dữ liệu khi luật áp dụng.</li>
       </ul>
@@ -118,7 +118,7 @@
       <p>We process information to provide contracted app features, remember settings, maintain security, prevent fraud, troubleshoot, comply with law, provide contextual advertising and—where consent is obtained—personalized advertising. Legal bases depend on location and may include contract, consent, legitimate interests and legal obligations.</p>
       <h3>4. Sharing, transfers and retention</h3>
       <p>Information is shared only with relevant stores/platforms, Google/YouTube, advertising providers, service providers and authorities when required for the stated purposes. Providers may process information internationally using safeguards required by applicable law.</p>
-      <p>Local data remains until deleted or the app is uninstalled; OAuth tokens remain until sign-out/revocation; consent choices remain until changed/reset; store and ad-provider data follow their own retention policies; support records remain only as needed to resolve requests and meet legal obligations.</p>
+      <p>Local data remains until deleted or the app is uninstalled; signing out keeps the saved account/token, while removing the account or revoking access deletes them; consent choices remain until changed/reset; store and ad-provider data follow their own retention policies; support records remain only as needed to resolve requests and meet legal obligations.</p>
       <h3>5. Your controls and rights</h3>
       <p>You can reopen ad privacy choices in Settings, change iOS Tracking permission, reset the platform advertising ID, sign out from YouTube, revoke Google access, clear app data or follow our <a href="data-deletion.html">Data Deletion instructions</a>. Where applicable, you may request access, correction, deletion, restriction, objection or portability by emailing <a href="mailto:loidd@outlook.com.vn">loidd@outlook.com.vn</a>.</p>
       <h3>6. Children, security and updates</h3>
