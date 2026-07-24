@@ -32,11 +32,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline
 .header-inner, main, .site-footer-inner { width: min(100% - 32px, var(--max-width)); margin: 0 auto; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-weight: 800; letter-spacing: -.02em; }
-.brand-mark {
-  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px;
-  color: #fff; background: linear-gradient(135deg, var(--brand-a), var(--brand-b));
-  box-shadow: 0 8px 18px rgba(76, 70, 220, .22); font-size: 1.25rem;
-}
+.brand-logo { display: block; width: 42px; height: 42px; border-radius: 13px; box-shadow: 0 8px 18px rgba(201, 0, 18, .22); }
 .header-nav { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; font-size: .9rem; }
 .header-nav a { color: var(--muted); }
 main { padding: 56px 0 72px; }
