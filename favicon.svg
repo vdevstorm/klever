@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Mark phẳng cho asset native; bản gradient đầy đủ vẫn có trong RCL web assets. -->
-  <rect x="20" y="20" width="472" height="472" rx="112" fill="#17171A" stroke="#2B2B31" stroke-width="8"/>
-  <path d="M124 112c-20 12-32 34-32 58v172c0 24 12 46 32 58l143-144L124 112z" fill="#C90012"/>
-  <path d="M124 112l234 103c34 15 34 67 0 82L124 400l143-144L124 112z" fill="#FF2D2D"/>
-  <path d="M205 184c-17-10-38 2-38 22v100c0 20 21 32 38 22l82-50c16-10 16-34 0-44l-82-50z" fill="#FFFFFF"/>
-  <path d="M394 90l9 24 24 9-24 9-9 24-9-24-24-9 24-9 9-24z" fill="#FFFFFF"/>
-  <path d="M394 99l5 15 15 5-15 5-5 15-5-15-15-5 15-5 5-15z" fill="#FF4A45"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5d4ce6"/><stop offset="1" stop-color="#159f91"/></linearGradient></defs>
+  <rect width="64" height="64" rx="18" fill="url(#g)"/>
+  <path d="M17 16h9l7 25 7-25h9L38 49H28L17 16Z" fill="#fff"/>
 </svg>
