@@ -1,9 +1,70 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-07-24T00:00:00Z",
+  "updatedAtUtc": "2026-07-25T00:00:00Z",
   "youtubeComplianceMode": true,
   "youtubeContentEnabled": true,
   "youtubeDataApiEnabled": true,
   "guestYouTubeContentEnabled": true,
-  "guestYouTubeDataApiEnabled": true
+  "guestYouTubeDataApiEnabled": true,
+  "ads": {
+    "enabled": false,
+    "mediationProvider": "applovin_max",
+    "formats": {
+      "banner": {
+        "enabled": true
+      },
+      "interstitial": {
+        "enabled": false
+      },
+      "rewarded": {
+        "enabled": false
+      }
+    },
+    "placements": {
+      "you": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "library": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "history": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "favorites": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "playlists": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "queue": {
+        "enabled": true,
+        "format": "banner"
+      },
+      "settings": {
+        "enabled": true,
+        "format": "banner"
+      }
+    },
+    "platforms": {
+      "ios": {
+        "enabled": true,
+        "appLovinSdkKey": "__IOS_MAX_SDK_KEY__",
+        "adUnits": {
+          "banner": "__IOS_MAX_BANNER_AD_UNIT_ID__"
+        }
+      },
+      "android": {
+        "enabled": true,
+        "appLovinSdkKey": "__ANDROID_MAX_SDK_KEY__",
+        "adUnits": {
+          "banner": "__ANDROID_MAX_BANNER_AD_UNIT_ID__"
+        }
+      }
+    }
+  }
 }
