@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "updatedAtUtc": "2026-07-25T00:00:00Z",
-  "youtubeComplianceMode": true,
+  "youtubeComplianceMode": false,
   "youtubeContentEnabled": true,
-  "youtubeDataApiEnabled": true,
+  "youtubeDataApiEnabled": false,
   "guestYouTubeContentEnabled": true,
-  "guestYouTubeDataApiEnabled": true,
+  "guestYouTubeDataApiEnabled": false,
   "ads": {
     "enabled": false,
     "mediationProvider": "applovin_max",
