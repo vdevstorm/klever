@@ -22,14 +22,14 @@
       <p class="eyebrow">Privacy Policy</p>
       <h1>Chính sách quyền riêng tư</h1>
       <p class="lead">Áp dụng cho ứng dụng VeyPlay trên iOS và Android, bundle/package <code>com.erppal.veyplay</code>.</p>
-      <p class="meta">Ngày hiệu lực: 2026-07-23 · Đơn vị kiểm soát dữ liệu: Genlogica Labs</p>
+      <p class="meta">Ngày hiệu lực: 2026-07-29 · Đơn vị kiểm soát dữ liệu: Genlogica Labs</p>
     </section>
     <nav class="lang-nav" aria-label="Ngôn ngữ"><a href="#vi">Tiếng Việt</a><a href="#en">English</a></nav>
 
     <article class="policy" id="vi" lang="vi">
       <h2>1. Phạm vi và đơn vị chịu trách nhiệm</h2>
       <p>Genlogica Labs (“chúng tôi”) cung cấp VeyPlay. Chính sách này giải thích dữ liệu nào được xử lý khi bạn dùng VeyPlay, mục đích, bên nhận dữ liệu và lựa chọn của bạn. Địa chỉ liên hệ: Việt Nam; email: <a href="mailto:genlogica@gmail.com">genlogica@gmail.com</a>.</p>
-      <p>Phase 1 không vận hành backend IAP/quảng cáo riêng. Phần lớn dữ liệu thư viện và playback được lưu trên thiết bị. Apple, Google, YouTube và các nhà cung cấp quảng cáo xử lý dữ liệu theo chính sách của họ khi bạn sử dụng chức năng tương ứng.</p>
+      <p>VeyPlay không vận hành backend IAP/quảng cáo riêng. Phần lớn dữ liệu thư viện và playback được lưu trên thiết bị. Apple và Google xử lý dữ liệu theo chính sách của họ khi bạn sử dụng store, YouTube hoặc Google AdMob.</p>
 
       <h2>2. Dữ liệu VeyPlay xử lý</h2>
       <h3>2.1. Dữ liệu lưu trên thiết bị</h3>
@@ -47,21 +47,21 @@
         <li>VeyPlay có thể nhận thông tin tài khoản/kênh, subscriptions hoặc dữ liệu YouTube khác theo scope hiển thị trong màn hình đồng ý và theo thao tác của bạn.</li>
         <li>Playback YouTube production dùng official YouTube player. Google/YouTube có thể xử lý thông tin thiết bị, cookie/web storage, hoạt động player và dữ liệu tài khoản theo <a href="https://policies.google.com/privacy">Google Privacy Policy</a> và <a href="https://www.youtube.com/t/terms">YouTube Terms</a>.</li>
       </ul>
-      <p>VeyPlay không dùng tài khoản YouTube hoặc nội dung xem để xây profile quảng cáo của riêng VeyPlay và không chuyển các dữ liệu này cho MAX để nhắm quảng cáo.</p>
+      <p>VeyPlay không dùng tài khoản YouTube hoặc nội dung xem để xây profile quảng cáo của riêng VeyPlay và không chuyển các dữ liệu này cho AdMob để nhắm quảng cáo.</p>
 
       <h3>2.3. Giao dịch và subscription</h3>
       <p>Apple App Store hoặc Google Play xử lý thanh toán, phương thức thanh toán, thuế, hoàn tiền và lịch sử giao dịch. VeyPlay nhận product ID, trạng thái giao dịch/entitlement, thời gian giao dịch, trạng thái auto-renew và thông tin catalog như giá bản địa hóa. VeyPlay không nhận số thẻ và không lưu receipt/purchase token trong database ứng dụng.</p>
 
       <h3>2.4. Quảng cáo trong gói Free</h3>
-      <p>VeyPlay dùng AppLovin MAX để phân phối banner trên một số màn hình native, với demand source AppLovin, Meta Audience Network, Liftoff Monetize/Vungle và Unity Ads. Không có Google AdMob adapter. Tùy khu vực, consent và cấu hình SDK, các nhà cung cấp này có thể xử lý:</p>
+      <p>VeyPlay chỉ dùng Google AdMob để phân phối banner, native/native video, interstitial, rewarded, rewarded interstitial và app-open ở các vị trí được cấu hình từ xa. VeyPlay không dùng mediation và không đóng gói thêm mạng quảng cáo khác. Tùy khu vực, consent và cấu hình SDK, Google có thể xử lý:</p>
       <ul>
         <li>Advertising ID/IDFA nếu được phép, địa chỉ IP và vị trí gần đúng suy ra từ IP.</li>
         <li>Thông tin thiết bị/app như model, OS, ngôn ngữ, package/bundle, phiên bản và trạng thái kết nối.</li>
         <li>Impression, click, lỗi tải quảng cáo, dữ liệu chống gian lận và chẩn đoán hiệu năng.</li>
         <li>Consent string/privacy choices cần để tuân thủ GDPR, luật tiểu bang Hoa Kỳ và yêu cầu nền tảng.</li>
       </ul>
-      <p>Nếu bạn từ chối cá nhân hóa hoặc ATT, VeyPlay yêu cầu quảng cáo contextual trong phạm vi SDK hỗ trợ. Khi entitlement Pro được xác nhận còn hiệu lực, VeyPlay không khởi tạo MAX và hủy ad view do VeyPlay quản lý. Điều này không thay đổi cách official YouTube player tự xử lý nội dung/quảng cáo của YouTube.</p>
-      <p>Chính sách của các nhà cung cấp: <a href="https://legal.applovin.com/en/privacy/">AppLovin</a>, <a href="https://www.facebook.com/privacy/policy/">Meta</a>, <a href="https://liftoff.io/privacy-policy/">Liftoff</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>.</p>
+      <p>Google User Messaging Platform (UMP) là nguồn duy nhất cho consent quảng cáo. Trên iOS, ATT kiểm soát quyền truy cập IDFA. Nếu không có quyền phù hợp, SDK chỉ xử lý yêu cầu trong phạm vi lựa chọn của người dùng và chính sách Google. Khi entitlement Pro/grace period được xác nhận, khi player đang hiển thị hoặc trong 30 phút thưởng không quảng cáo, VeyPlay không request/hiển thị quảng cáo do VeyPlay quản lý. Điều này không thay đổi cách official YouTube player tự xử lý nội dung/quảng cáo của YouTube.</p>
+      <p>Chính sách nhà cung cấp: <a href="https://policies.google.com/privacy">Google Privacy Policy</a> và <a href="https://policies.google.com/technologies/ads">Google Advertising Policies</a>.</p>
 
       <h3>2.5. Chẩn đoán và hỗ trợ</h3>
       <p>VeyPlay có thể ghi log kỹ thuật không chứa PII để chẩn đoán crash, network/no-fill và lỗi playback. Log chi tiết chỉ bật trong Debug. Nếu bạn liên hệ hỗ trợ, chúng tôi xử lý thông tin bạn tự gửi như email, phiên bản app, thiết bị, OS và mô tả lỗi.</p>
@@ -103,15 +103,15 @@
 
     <article class="policy" id="en" lang="en" style="margin-top:32px">
       <h2>Privacy Policy — English</h2>
-      <p><strong>Effective date:</strong> 2026-07-23. <strong>Controller:</strong> Genlogica Labs, Việt Nam, <a href="mailto:genlogica@gmail.com">genlogica@gmail.com</a>.</p>
+      <p><strong>Effective date:</strong> 2026-07-29. <strong>Controller:</strong> Genlogica Labs, Việt Nam, <a href="mailto:genlogica@gmail.com">genlogica@gmail.com</a>.</p>
       <h3>1. Scope</h3>
-      <p>This Policy covers VeyPlay for iOS and Android. Phase 1 does not operate a proprietary IAP or advertising backend. Most library and playback data remains on the device. Apple, Google, YouTube, AppLovin and mediated ad partners process data under their own policies when you use the relevant features.</p>
+      <p>This Policy covers VeyPlay for iOS and Android. VeyPlay does not operate a proprietary IAP or advertising backend. Most library and playback data remains on the device. Apple and Google process data under their own policies when you use store, YouTube or Google AdMob features.</p>
       <h3>2. Information processed</h3>
       <ul>
         <li><strong>On-device data:</strong> history, favorites, playlists, queue, settings, playback state, imported media, metadata, cache, consent choice and a cached Pro entitlement.</li>
         <li><strong>YouTube:</strong> OAuth tokens stored in OS secure storage and account/channel/subscription data covered by the scopes shown to you. Production playback uses the official YouTube player.</li>
         <li><strong>Purchases:</strong> product ID, transaction/entitlement state, transaction date, renewal state and localized catalog data. Apple or Google handles payment credentials and refunds.</li>
-        <li><strong>Free-tier ads:</strong> AppLovin MAX with AppLovin, Meta Audience Network, Liftoff Monetize/Vungle and Unity Ads. Depending on consent, region and SDK settings, providers may process advertising identifiers, IP-derived approximate location, device/app data, impressions, clicks, diagnostics, fraud-prevention data and consent strings.</li>
+        <li><strong>Free-tier ads:</strong> Google AdMob only, without mediation. Depending on UMP consent, ATT, region and SDK settings, Google may process advertising identifiers, IP-derived approximate location, device/app data, impressions, clicks, diagnostics, fraud-prevention data and consent strings.</li>
         <li><strong>Support:</strong> contact details and technical information you voluntarily provide.</li>
       </ul>
       <p>VeyPlay does not store advertising identifiers in its SQLite database, does not use precise location, contacts, YouTube account data or viewing content for VeyPlay ad targeting, and does not retain payment card data or store receipts/purchase tokens in the app database.</p>
@@ -124,7 +124,7 @@
       <p>You can reopen ad privacy choices in Settings, change iOS Tracking permission, reset the platform advertising ID, sign out from YouTube, revoke Google access, clear app data or follow our <a href="data-deletion.html">Data Deletion instructions</a>. Where applicable, you may request access, correction, deletion, restriction, objection or portability by emailing <a href="mailto:genlogica@gmail.com">genlogica@gmail.com</a>.</p>
       <h3>6. Children, security and updates</h3>
       <p>VeyPlay is not directed to children under 13 or a higher local minimum age and does not knowingly collect children's data. We use platform sandboxing, secure storage and transport protections, but no system is completely secure. Material policy changes will be reflected by a new effective date and additional notice where required.</p>
-      <p>Third-party policies: <a href="https://policies.google.com/privacy">Google</a>, <a href="https://legal.applovin.com/en/privacy/">AppLovin</a>, <a href="https://www.facebook.com/privacy/policy/">Meta</a>, <a href="https://liftoff.io/privacy-policy/">Liftoff</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>.</p>
+      <p>Third-party policies: <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/ads">Google Advertising Policies</a>.</p>
     </article>
   </main>
   <footer class="site-footer"><div class="site-footer-inner">

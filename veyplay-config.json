@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-07-26T00:00:00Z",
+  "updatedAtUtc": "2026-07-29T00:00:00Z",
   "youtubeComplianceMode": false,
   "youtubeContentEnabled": true,
   "youtubeDataApiEnabled": true,
@@ -10,17 +10,43 @@
   "youtubeShortsIframePlaybackEnabled": true,
   "youtubeCookieStorageEnabled": true,
   "ads": {
-    "enabled": false,
-    "mediationProvider": "applovin_max",
+    "enabled": true,
+    "provider": "admob",
     "formats": {
       "banner": {
-        "enabled": true
+        "enabled": true,
+        "adSize": "anchoredAdaptive"
+      },
+      "native": {
+        "enabled": true,
+        "startMuted": true
       },
       "interstitial": {
-        "enabled": false
+        "enabled": true,
+        "minEligibleActions": 5,
+        "minIntervalSeconds": 180,
+        "maxPerSession": 3
       },
       "rewarded": {
-        "enabled": false
+        "enabled": true,
+        "reward": {
+          "type": "adFreeMinutes",
+          "value": 30
+        }
+      },
+      "rewardedInterstitial": {
+        "enabled": true,
+        "reward": {
+          "type": "adFreeMinutes",
+          "value": 30
+        }
+      },
+      "appOpen": {
+        "enabled": true,
+        "minBackgroundSeconds": 60,
+        "minIntervalSeconds": 14400,
+        "maxPerSession": 1,
+        "skipFirstLaunch": true
       }
     },
     "placements": {
@@ -30,7 +56,7 @@
       },
       "library": {
         "enabled": true,
-        "format": "banner"
+        "format": "native"
       },
       "history": {
         "enabled": true,
@@ -51,21 +77,43 @@
       "settings": {
         "enabled": true,
         "format": "banner"
+      },
+      "navigationBreak": {
+        "enabled": true,
+        "format": "interstitial"
+      },
+      "appForeground": {
+        "enabled": true,
+        "format": "appOpen"
+      },
+      "settingsAdFreeReward": {
+        "enabled": false,
+        "format": "rewarded"
       }
     },
     "platforms": {
       "ios": {
         "enabled": true,
-        "appLovinSdkKey": "__IOS_MAX_SDK_KEY__",
+        "appId": "ca-app-pub-1130310462701991~8527604110",
         "adUnits": {
-          "banner": "__IOS_MAX_BANNER_AD_UNIT_ID__"
+          "banner": "ca-app-pub-1130310462701991/6679904047",
+          "native": "ca-app-pub-1130310462701991/8755403049",
+          "interstitial": "ca-app-pub-1130310462701991/7250749682",
+          "rewarded": "ca-app-pub-1130310462701991/3311504679",
+          "rewardedInterstitial": "ca-app-pub-1130310462701991/2691155200",
+          "appOpen": "ca-app-pub-1130310462701991/9441798759"
         }
       },
       "android": {
         "enabled": true,
-        "appLovinSdkKey": "__ANDROID_MAX_SDK_KEY__",
+        "appId": "ca-app-pub-1130310462701991~7406094133",
         "adUnits": {
-          "banner": "__ANDROID_MAX_BANNER_AD_UNIT_ID__"
+          "banner": "ca-app-pub-1130310462701991/7007207108",
+          "native": "ca-app-pub-1130310462701991/3618626434",
+          "interstitial": "ca-app-pub-1130310462701991/3579218123",
+          "rewarded": "ca-app-pub-1130310462701991/3123802410",
+          "rewardedInterstitial": "ca-app-pub-1130310462701991/8559393700",
+          "appOpen": "ca-app-pub-1130310462701991/7246312030"
         }
       }
     }
