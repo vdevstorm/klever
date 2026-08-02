@@ -25,24 +25,61 @@
       let desiredSpeed = Math.max(0.25, Math.min(2, Number(query.get("speed")) || 1));
       let player;
       let stateTimer;
+      let apiTimeout;
+      let readyTimeout;
 
       function isValidVideoId(value) {
         return /^[A-Za-z0-9_-]{6,20}$/.test(value);
       }
 
-      if (!isValidVideoId(currentVideoId)) return;
-
       function send(payload) {
         window.parent.postMessage({ scope, ...payload }, "*");
       }
 
-      function publish(error) {
-        if (!player || typeof player.getPlayerState !== "function") return;
+      if (!isValidVideoId(currentVideoId)) {
         send({
           type: "state",
-          state: player.getPlayerState(),
-          position: player.getCurrentTime ? player.getCurrentTime() : 0,
-          duration: player.getDuration ? player.getDuration() : 0,
+          state: -1,
+          position: 0,
+          duration: 0,
+          videoId: currentVideoId,
+          error: { code: "bridge-invalid-video-id", phase: "validation", message: "Mã video YouTube không hợp lệ." }
+        });
+        return;
+      }
+
+      function clearApiTimeout() {
+        if (apiTimeout) window.clearTimeout(apiTimeout);
+        apiTimeout = undefined;
+      }
+
+      function clearWatchdogs() {
+        clearApiTimeout();
+        if (readyTimeout) window.clearTimeout(readyTimeout);
+        apiTimeout = undefined;
+        readyTimeout = undefined;
+      }
+
+      function createError(code, phase) {
+        const messages = {
+          "2": "Yêu cầu phát YouTube không hợp lệ.",
+          "5": "Trình phát YouTube không thể tải nội dung này.",
+          "100": "Video YouTube này không còn khả dụng.",
+          "101": "Chủ sở hữu không cho phép phát video này trong trình phát nhúng.",
+          "150": "Chủ sở hữu không cho phép phát video này trong trình phát nhúng.",
+          "bridge-api-timeout": "Trình phát YouTube không phản hồi kịp thời.",
+          "bridge-api-load": "Không thể tải trình phát YouTube.",
+          "bridge-onready-timeout": "Trình phát YouTube không sẵn sàng kịp thời."
+        };
+        return { code: String(code), phase, message: messages[String(code)] || "YouTube không thể phát video này." };
+      }
+
+      function publish(error) {
+        send({
+          type: "state",
+          state: player && typeof player.getPlayerState === "function" ? player.getPlayerState() : -1,
+          position: player && player.getCurrentTime ? player.getCurrentTime() : 0,
+          duration: player && player.getDuration ? player.getDuration() : 0,
           videoId: currentVideoId,
           error: error || null
         });
@@ -78,6 +115,7 @@
       }
 
       window.onYouTubeIframeAPIReady = () => {
+        clearApiTimeout();
         player = new YT.Player("player", {
           width: "100%",
           height: "100%",
@@ -93,6 +131,7 @@
           },
           events: {
             onReady: event => {
+              clearWatchdogs();
               if (startSeconds > 0) event.target.seekTo(startSeconds, true);
               applyDesiredSpeed();
               if (autoplay) event.target.playVideo();
@@ -112,9 +151,15 @@
               if (event.data === 1 || event.data === 5) applyDesiredSpeed();
               publish();
             },
-            onError: event => publish(`YouTube không thể phát video này (mã ${event.data}).`)
+            onError: event => {
+              clearWatchdogs();
+              publish(createError(event.data, "player"));
+            }
           }
         });
+        readyTimeout = window.setTimeout(() => {
+          publish(createError("bridge-onready-timeout", "player-ready"));
+        }, 11000);
       };
 
       window.addEventListener("message", event => {
@@ -135,6 +180,7 @@
           case "volume": player.setVolume(Math.max(0, Math.min(100, Number(message.value) || 0))); break;
           case "destroy":
             if (stateTimer) window.clearInterval(stateTimer);
+            clearWatchdogs();
             player.destroy();
             player = null;
             break;
@@ -155,7 +201,14 @@
       const api = document.createElement("script");
       api.src = "https://www.youtube.com/iframe_api";
       api.async = true;
+      api.onerror = () => {
+        clearApiTimeout();
+        publish(createError("bridge-api-load", "api-load"));
+      };
       document.head.appendChild(api);
+      apiTimeout = window.setTimeout(() => {
+        publish(createError("bridge-api-timeout", "api-load"));
+      }, 11000);
     })();
   </script>
 </body>
