@@ -15,7 +15,7 @@
   "backgroundPlaybackEnabled": false,
   "backgroundQueueEnabled": false,
   "pictureInPictureEnabled": false,
-  "activePlaybackProfile": "compliance",
+  "activePlaybackProfile": "enhanced",
   "playbackProfiles": {
     "compliance": {
       "youtubeComplianceMode": true,
