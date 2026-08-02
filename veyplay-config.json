@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-08-01T00:00:00Z",
+  "updatedAtUtc": "2026-08-02T03:30:18Z",
   "youtubeComplianceMode": true,
   "youtubeContentEnabled": true,
   "youtubeDataApiEnabled": true,
@@ -15,6 +15,41 @@
   "backgroundPlaybackEnabled": false,
   "backgroundQueueEnabled": false,
   "pictureInPictureEnabled": false,
+  "activePlaybackProfile": "compliance",
+  "playbackProfiles": {
+    "compliance": {
+      "youtubeComplianceMode": true,
+      "youtubeContentEnabled": true,
+      "youtubeDataApiEnabled": true,
+      "guestYouTubeContentEnabled": true,
+      "guestYouTubeDataApiEnabled": true,
+      "directStreamPlaybackEnabled": false,
+      "adaptiveStreamPlaybackEnabled": false,
+      "adaptiveStreamRolloutPercent": 0,
+      "adaptiveStreamFallbackEnabled": false,
+      "youtubeShortsIframePlaybackEnabled": true,
+      "youtubeCookieStorageEnabled": true,
+      "backgroundPlaybackEnabled": false,
+      "backgroundQueueEnabled": false,
+      "pictureInPictureEnabled": false
+    },
+    "enhanced": {
+      "youtubeComplianceMode": false,
+      "youtubeContentEnabled": true,
+      "youtubeDataApiEnabled": true,
+      "guestYouTubeContentEnabled": true,
+      "guestYouTubeDataApiEnabled": true,
+      "directStreamPlaybackEnabled": true,
+      "adaptiveStreamPlaybackEnabled": true,
+      "adaptiveStreamRolloutPercent": 100,
+      "adaptiveStreamFallbackEnabled": true,
+      "youtubeShortsIframePlaybackEnabled": true,
+      "youtubeCookieStorageEnabled": true,
+      "backgroundPlaybackEnabled": true,
+      "backgroundQueueEnabled": true,
+      "pictureInPictureEnabled": true
+    }
+  },
   "ads": {
     "enabled": true,
     "provider": "admob",
