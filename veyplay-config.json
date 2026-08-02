@@ -31,7 +31,14 @@
       "youtubeCookieStorageEnabled": true,
       "backgroundPlaybackEnabled": false,
       "backgroundQueueEnabled": false,
-      "pictureInPictureEnabled": false
+      "pictureInPictureEnabled": false,
+      "offlineDownloads": {
+        "enabled": false,
+        "audience": "all",
+        "excludedCountryCodes": [],
+        "offlineLeaseHours": 168,
+        "saveToDeviceLibraryEnabled": false
+      }
     },
     "enhanced": {
       "youtubeComplianceMode": false,
@@ -47,7 +54,14 @@
       "youtubeCookieStorageEnabled": true,
       "backgroundPlaybackEnabled": true,
       "backgroundQueueEnabled": true,
-      "pictureInPictureEnabled": true
+      "pictureInPictureEnabled": true,
+      "offlineDownloads": {
+        "enabled": true,
+        "audience": "pro",
+        "excludedCountryCodes": [],
+        "offlineLeaseHours": 168,
+        "saveToDeviceLibraryEnabled": true
+      }
     }
   },
   "ads": {

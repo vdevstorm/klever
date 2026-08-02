@@ -36,10 +36,12 @@
       <ul>
         <li>History, favorites, playlists, queue, cài đặt, trạng thái playback, metadata media và cache.</li>
         <li>Tệp audio/video bạn chủ động nhập vào sandbox của ứng dụng và quyền truy cập media cần thiết trên Android.</li>
+        <li>Tệp audio/video offline được tải theo quyền của provider, lưu trong vùng dữ liệu riêng của ứng dụng (app-private storage).</li>
+        <li>Nếu export gate được bật và bạn yêu cầu, VeyPlay có thể tạo bản sao media offline trong thư viện thiết bị; cờ này mặc định tắt, và lease `0` (nếu policy cho phép) không đặt thời điểm hết hạn.</li>
         <li>Trạng thái entitlement Pro được cache để tránh hiển thị quảng cáo nhầm khi khởi động.</li>
         <li>Lựa chọn privacy/consent kỹ thuật. VeyPlay không lưu ID quảng cáo vào SQLite.</li>
       </ul>
-      <p>Các dữ liệu này phục vụ chức năng bạn yêu cầu và thường không được gửi tới server riêng của VeyPlay.</p>
+      <p>Các dữ liệu này phục vụ chức năng bạn yêu cầu và thường không được gửi tới server riêng của VeyPlay. Để kiểm tra điều kiện quốc gia cho offline, VeyPlay chỉ lưu mã quốc gia suy ra từ IP và thời điểm xác minh; VeyPlay không lưu địa chỉ IP.</p>
 
       <h3>2.2. Kết nối YouTube/Google</h3>
       <ul>
@@ -108,13 +110,13 @@
       <p>This Policy covers VeyPlay for iOS and Android. VeyPlay does not operate a proprietary IAP or advertising backend. Most library and playback data remains on the device. Apple and Google process data under their own policies when you use store, YouTube or Google AdMob features.</p>
       <h3>2. Information processed</h3>
       <ul>
-        <li><strong>On-device data:</strong> history, favorites, playlists, queue, settings, playback state, imported media, metadata, cache, consent choice and a cached Pro entitlement.</li>
+        <li><strong>On-device data:</strong> history, favorites, playlists, queue, settings, playback state, imported media, provider-authorized offline audio/video files in app-private storage, optional user-requested copies in the device library when the export gate is enabled, metadata, cache, consent choice and a cached Pro entitlement. A policy lease of <code>0</code> means no expiry.</li>
         <li><strong>YouTube:</strong> OAuth tokens stored in OS secure storage and account/channel/subscription data covered by the scopes shown to you. Production playback uses the official YouTube player.</li>
         <li><strong>Purchases:</strong> product ID, transaction/entitlement state, transaction date, renewal state and localized catalog data. Apple or Google handles payment credentials and refunds.</li>
         <li><strong>Free-tier ads:</strong> Google AdMob only, without mediation. Depending on UMP consent, ATT, region and SDK settings, Google may process advertising identifiers, IP-derived approximate location, device/app data, impressions, clicks, diagnostics, fraud-prevention data and consent strings.</li>
         <li><strong>Support:</strong> contact details and technical information you voluntarily provide.</li>
       </ul>
-      <p>VeyPlay does not store advertising identifiers in its SQLite database, does not use precise location, contacts, YouTube account data or viewing content for VeyPlay ad targeting, and does not retain payment card data or store receipts/purchase tokens in the app database.</p>
+      <p>For offline eligibility, VeyPlay stores only the IP-derived country code and verification timestamp; it does not store the IP address. VeyPlay does not store advertising identifiers in its SQLite database, does not use precise location, contacts, YouTube account data or viewing content for VeyPlay ad targeting, and does not retain payment card data or store receipts/purchase tokens in the app database.</p>
       <h3>3. Purposes and legal bases</h3>
       <p>We process information to provide contracted app features, remember settings, maintain security, prevent fraud, troubleshoot, comply with law, provide contextual advertising and—where consent is obtained—personalized advertising. Legal bases depend on location and may include contract, consent, legitimate interests and legal obligations.</p>
       <h3>4. Sharing, transfers and retention</h3>
