@@ -57,9 +57,9 @@
       "pictureInPictureEnabled": true,
       "offlineDownloads": {
         "enabled": true,
-        "audience": "pro",
+        "audience": "all",
         "excludedCountryCodes": [],
-        "offlineLeaseHours": 168,
+        "offlineLeaseHours": 0,
         "saveToDeviceLibraryEnabled": true
       }
     }
