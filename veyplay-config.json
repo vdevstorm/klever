@@ -1,20 +1,6 @@
 {
   "schemaVersion": 1,
   "updatedAtUtc": "2026-08-02T04:36:10Z",
-  "youtubeComplianceMode": true,
-  "youtubeContentEnabled": true,
-  "youtubeDataApiEnabled": true,
-  "guestYouTubeContentEnabled": true,
-  "guestYouTubeDataApiEnabled": true,
-  "directStreamPlaybackEnabled": false,
-  "adaptiveStreamPlaybackEnabled": false,
-  "adaptiveStreamRolloutPercent": 0,
-  "adaptiveStreamFallbackEnabled": false,
-  "youtubeShortsIframePlaybackEnabled": true,
-  "youtubeCookieStorageEnabled": true,
-  "backgroundPlaybackEnabled": false,
-  "backgroundQueueEnabled": false,
-  "pictureInPictureEnabled": false,
   "activePlaybackProfile": "enhanced",
   "playbackProfiles": {
     "compliance": {
