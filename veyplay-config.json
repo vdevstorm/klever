@@ -46,7 +46,7 @@
       "youtubeDataApiEnabled": true,
       "guestYouTubeContentEnabled": true,
       "guestYouTubeDataApiEnabled": true,
-      "directStreamPlaybackEnabled": false,
+      "directStreamPlaybackEnabled": true,
       "adaptiveStreamPlaybackEnabled": true,
       "adaptiveStreamRolloutPercent": 100,
       "adaptiveStreamFallbackEnabled": true,
