@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-08-26T09:30:00Z",
+  "updatedAtUtc": "2026-08-26T12:00:00Z",
   "activePlaybackProfile": "compliance",
   "playbackProfiles": {
     "compliance": {
@@ -24,7 +24,8 @@
         "excludedCountryCodes": [],
         "offlineLeaseHours": 168,
         "saveToDeviceLibraryEnabled": false
-      }
+      },
+      "youtubeOnlineBackgroundPlaybackEnabled": false
     },
     "enhanced": {
       "youtubeComplianceMode": false,
@@ -47,7 +48,8 @@
         "excludedCountryCodes": [],
         "offlineLeaseHours": 0,
         "saveToDeviceLibraryEnabled": true
-      }
+      },
+      "youtubeOnlineBackgroundPlaybackEnabled": true
     }
   },
   "ads": {
