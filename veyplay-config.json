@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-08-09T17:00:18Z",
+  "updatedAtUtc": "2026-08-26T09:30:00Z",
   "activePlaybackProfile": "compliance",
   "playbackProfiles": {
     "compliance": {
@@ -15,8 +15,8 @@
       "adaptiveStreamFallbackEnabled": false,
       "youtubeShortsIframePlaybackEnabled": true,
       "youtubeCookieStorageEnabled": true,
-      "backgroundPlaybackEnabled": false,
-      "backgroundQueueEnabled": false,
+      "backgroundPlaybackEnabled": true,
+      "backgroundQueueEnabled": true,
       "pictureInPictureEnabled": false,
       "offlineDownloads": {
         "enabled": false,
