@@ -54,7 +54,7 @@
   },
   "reviewAccess": {
     "enabled": true,
-    "codeSha256": "dd042d965df63f0ea4f70e7baf74ceca6e8c84cd2255a8ded53ecead9f8238f2",
+    "codeSha256": "ec1ecde10a8174cf847dad5347c3c18d31fc2b8505aa61cc83064771a71ca30d",
     "expiresAtUtc": "2026-10-31T23:59:59Z",
     "grantHours": 168
   },
