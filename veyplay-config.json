@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-08-30T09:27:52Z",
+  "updatedAtUtc": "2026-08-31T09:09:00Z",
   "activePlaybackProfile": "compliance",
   "playbackProfiles": {
     "compliance": {
@@ -51,6 +51,12 @@
       },
       "youtubeOnlineBackgroundPlaybackEnabled": true
     }
+  },
+  "reviewAccess": {
+    "enabled": true,
+    "codeSha256": "dd042d965df63f0ea4f70e7baf74ceca6e8c84cd2255a8ded53ecead9f8238f2",
+    "expiresAtUtc": "2026-10-31T23:59:59Z",
+    "grantHours": 168
   },
   "ads": {
     "enabled": true,
