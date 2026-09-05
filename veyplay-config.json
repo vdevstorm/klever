@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-09-05T02:20:00Z",
+  "updatedAtUtc": "2026-09-05T08:32:41Z",
   "activePlaybackProfile": "compliance",
   "playbackProfiles": {
     "compliance": {
@@ -174,147 +174,30 @@
       }
     },
     "pro": {
-      "youtubeComplianceMode": false,
+      "youtubeComplianceMode": true,
       "youtubeContentEnabled": true,
       "youtubeDataApiEnabled": true,
       "guestYouTubeContentEnabled": true,
       "guestYouTubeDataApiEnabled": true,
-      "directStreamPlaybackEnabled": true,
-      "adaptiveStreamPlaybackEnabled": true,
-      "adaptiveStreamRolloutPercent": 100,
-      "adaptiveStreamFallbackEnabled": true,
+      "directStreamPlaybackEnabled": false,
+      "adaptiveStreamPlaybackEnabled": false,
+      "adaptiveStreamRolloutPercent": 0,
+      "adaptiveStreamFallbackEnabled": false,
       "youtubeShortsIframePlaybackEnabled": true,
       "youtubeCookieStorageEnabled": true,
       "backgroundPlaybackEnabled": true,
       "backgroundQueueEnabled": true,
-      "pictureInPictureEnabled": true,
+      "pictureInPictureEnabled": false,
       "offlineDownloads": {
-        "enabled": true,
+        "enabled": false,
         "audience": "all",
         "excludedCountryCodes": [],
-        "offlineLeaseHours": 0,
-        "saveToDeviceLibraryEnabled": true
+        "offlineLeaseHours": 168,
+        "saveToDeviceLibraryEnabled": false
       },
-      "youtubeOnlineBackgroundPlaybackEnabled": true,
-      "homeFeedV2Enabled": true,
-      "mixQueueEnabled": true,
-      "backgroundRestoreRewindSeconds": 3,
-      "mixGeneratedItemLimit": 50,
-      "relatedVideoApiEnabled": true,
-      "reviewAccess": {
-        "enabled": true,
-        "codeSha256": "ec1ecde10a8174cf847dad5347c3c18d31fc2b8505aa61cc83064771a71ca30d",
-        "expiresAtUtc": "2026-10-31T23:59:59Z",
-        "grantHours": 168
-      },
+      "youtubeOnlineBackgroundPlaybackEnabled": false,
       "ads": {
-        "enabled": false,
-        "provider": "admob",
-        "formats": {
-          "banner": {
-            "enabled": true,
-            "adSize": "anchoredAdaptive"
-          },
-          "native": {
-            "enabled": true,
-            "startMuted": true
-          },
-          "interstitial": {
-            "enabled": true,
-            "minEligibleActions": 5,
-            "minIntervalSeconds": 180,
-            "maxPerSession": 3
-          },
-          "rewarded": {
-            "enabled": true,
-            "reward": {
-              "type": "adFreeMinutes",
-              "value": 30
-            }
-          },
-          "rewardedInterstitial": {
-            "enabled": true,
-            "reward": {
-              "type": "adFreeMinutes",
-              "value": 30
-            }
-          },
-          "appOpen": {
-            "enabled": true,
-            "minBackgroundSeconds": 60,
-            "minIntervalSeconds": 14400,
-            "maxPerSession": 1,
-            "skipFirstLaunch": true
-          }
-        },
-        "placements": {
-          "you": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "library": {
-            "enabled": true,
-            "format": "native"
-          },
-          "history": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "favorites": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "playlists": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "queue": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "settings": {
-            "enabled": true,
-            "format": "banner"
-          },
-          "navigationBreak": {
-            "enabled": true,
-            "format": "interstitial"
-          },
-          "appForeground": {
-            "enabled": true,
-            "format": "appOpen"
-          },
-          "settingsAdFreeReward": {
-            "enabled": false,
-            "format": "rewarded"
-          }
-        },
-        "platforms": {
-          "ios": {
-            "enabled": true,
-            "appId": "ca-app-pub-1130310462701991~8527604110",
-            "adUnits": {
-              "banner": "ca-app-pub-1130310462701991/6679904047",
-              "native": "ca-app-pub-1130310462701991/8755403049",
-              "interstitial": "ca-app-pub-1130310462701991/7250749682",
-              "rewarded": "ca-app-pub-1130310462701991/3311504679",
-              "rewardedInterstitial": "ca-app-pub-1130310462701991/2691155200",
-              "appOpen": "ca-app-pub-1130310462701991/9441798759"
-            }
-          },
-          "android": {
-            "enabled": true,
-            "appId": "ca-app-pub-1130310462701991~7406094133",
-            "adUnits": {
-              "banner": "ca-app-pub-1130310462701991/7007207108",
-              "native": "ca-app-pub-1130310462701991/3618626434",
-              "interstitial": "ca-app-pub-1130310462701991/3579218123",
-              "rewarded": "ca-app-pub-1130310462701991/3123802410",
-              "rewardedInterstitial": "ca-app-pub-1130310462701991/8559393700",
-              "appOpen": "ca-app-pub-1130310462701991/7246312030"
-            }
-          }
-        }
+        "enabled": false
       }
     }
   },
