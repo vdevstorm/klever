@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-09-04T22:14:46Z",
+  "updatedAtUtc": "2026-09-05T02:20:00Z",
   "activePlaybackProfile": "compliance",
   "playbackProfiles": {
     "compliance": {
@@ -168,6 +168,11 @@
     }
   },
   "policyProfiles": {
+    "default": {
+      "ads": {
+        "enabled": true
+      }
+    },
     "pro": {
       "youtubeComplianceMode": false,
       "youtubeContentEnabled": true,
@@ -203,7 +208,7 @@
         "grantHours": 168
       },
       "ads": {
-        "enabled": true,
+        "enabled": false,
         "provider": "admob",
         "formats": {
           "banner": {
@@ -314,7 +319,9 @@
     }
   },
   "audienceProfiles": {
-    "default": [],
+    "default": [
+      "default"
+    ],
     "pro": [
       "pro"
     ]
