@@ -89,13 +89,25 @@
         return { code: String(code), phase, message: messages[String(code)] || "YouTube không thể phát video này." };
       }
 
-      function publish(error) {
+      function resolvePlayerVideoId(target) {
+        try {
+          const data = target && typeof target.getVideoData === "function"
+            ? target.getVideoData()
+            : null;
+          const actualVideoId = String(data && data.video_id || "");
+          return isValidVideoId(actualVideoId) ? actualVideoId : currentVideoId;
+        } catch (_) {
+          return currentVideoId;
+        }
+      }
+
+      function publish(error, target) {
         send({
           type: "state",
           state: player && typeof player.getPlayerState === "function" ? player.getPlayerState() : -1,
           position: player && player.getCurrentTime ? player.getCurrentTime() : 0,
           duration: player && player.getDuration ? player.getDuration() : 0,
-          videoId: currentVideoId,
+          videoId: resolvePlayerVideoId(target || player),
           error: error || null
         });
       }
@@ -106,6 +118,29 @@
         }
       }
 
+      function canReuseHealthyAndroidVideo(nextVideoId) {
+        if (!isAndroidClient || !clientReferrer || !player) return false;
+        const actualVideoId = resolvePlayerVideoId(player);
+        const state = typeof player.getPlayerState === "function"
+          ? player.getPlayerState()
+          : -1;
+        return actualVideoId === nextVideoId
+          && (state === 1 || state === 2 || state === 3 || state === 5);
+      }
+
+      function reuseHealthyAndroidVideo(nextStart, autoPlay) {
+        const currentPosition = player && typeof player.getCurrentTime === "function"
+          ? player.getCurrentTime()
+          : 0;
+        if (Math.abs(currentPosition - nextStart) > 1.5
+            && typeof player.seekTo === "function") {
+          player.seekTo(nextStart, true);
+        }
+        applyDesiredSpeed();
+        if (autoPlay && typeof player.playVideo === "function") player.playVideo();
+        else if (!autoPlay && typeof player.pauseVideo === "function") player.pauseVideo();
+      }
+
       function loadVideo(value) {
         const nextVideoId = String(value && value.videoId || "");
         if (!player || !isValidVideoId(nextVideoId)) return;
@@ -114,6 +149,16 @@
         desiredSpeed = Math.max(0.25, Math.min(2, Number(value.speed) || 1));
         loopPlayback = Boolean(value.loop);
         clientReferrer = normalizeClientReferrer(value.clientReferrer) || clientReferrer;
+        if (canReuseHealthyAndroidVideo(nextVideoId)) {
+          // Android giữ một YT.Player giữa các lần Next. Khi Razor chỉ đổi load
+          // revision trước khi video đích đổi, bridge cũ từng load lại chính video
+          // đang phát và tạo thêm decoder. Giữ nguyên player khỏe mạnh để lần load
+          // video đích kế tiếp tiếp quản mà không tạo callback/decoder thừa.
+          currentVideoId = nextVideoId;
+          reuseHealthyAndroidVideo(nextStart, Boolean(value.autoplay));
+          return;
+        }
+
         currentVideoId = nextVideoId;
         send({
           type: "state",
@@ -152,11 +197,11 @@
                 return;
               }
               if (event.data === 1 || event.data === 5) applyDesiredSpeed();
-              publish();
+              publish(null, event.target);
             },
             onError: event => {
               clearWatchdogs();
-              publish(createError(event.data, "player"));
+              publish(createError(event.data, "player"), event.target);
             }
         };
 
