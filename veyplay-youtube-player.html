@@ -23,6 +23,9 @@
       let loopPlayback = query.get("loop") === "1";
       const startSeconds = Math.max(0, Number(query.get("start")) || 0);
       let desiredSpeed = Math.max(0.25, Math.min(2, Number(query.get("speed")) || 1));
+      const isAndroidClient = /\bAndroid\b/i.test(navigator.userAgent || "");
+      let clientReferrer = normalizeClientReferrer(query.get("clientReferrer"))
+        || (isAndroidClient ? "https://com.erppal.veyplay" : "");
       let player;
       let stateTimer;
       let apiTimeout;
@@ -30,6 +33,17 @@
 
       function isValidVideoId(value) {
         return /^[A-Za-z0-9_-]{6,20}$/.test(value);
+      }
+
+      function normalizeClientReferrer(value) {
+        if (!value) return "";
+        try {
+          const url = new URL(String(value));
+          if (url.protocol !== "https:" || url.username || url.password) return "";
+          return url.origin;
+        } catch (_) {
+          return "";
+        }
       }
 
       function send(payload) {
@@ -67,6 +81,7 @@
           "100": "Video YouTube này không còn khả dụng.",
           "101": "Chủ sở hữu không cho phép phát video này trong trình phát nhúng.",
           "150": "Chủ sở hữu không cho phép phát video này trong trình phát nhúng.",
+          "153": "YouTube không nhận được định danh ứng dụng hợp lệ cho trình phát nhúng.",
           "bridge-api-timeout": "Trình phát YouTube không phản hồi kịp thời.",
           "bridge-api-load": "Không thể tải trình phát YouTube.",
           "bridge-onready-timeout": "Trình phát YouTube không sẵn sàng kịp thời."
@@ -98,6 +113,7 @@
         const nextStart = Math.max(0, Number(value.start) || 0);
         desiredSpeed = Math.max(0.25, Math.min(2, Number(value.speed) || 1));
         loopPlayback = Boolean(value.loop);
+        clientReferrer = normalizeClientReferrer(value.clientReferrer) || clientReferrer;
         currentVideoId = nextVideoId;
         send({
           type: "state",
@@ -116,20 +132,7 @@
 
       window.onYouTubeIframeAPIReady = () => {
         clearApiTimeout();
-        player = new YT.Player("player", {
-          width: "100%",
-          height: "100%",
-          videoId: currentVideoId,
-          playerVars: {
-            playsinline: 1,
-            rel: 0,
-            controls: 1,
-            fs: 1,
-            enablejsapi: 1,
-            origin: window.location.origin,
-            widget_referrer: window.location.href
-          },
-          events: {
+        const events = {
             onReady: event => {
               clearWatchdogs();
               if (startSeconds > 0) event.target.seekTo(startSeconds, true);
@@ -155,8 +158,51 @@
               clearWatchdogs();
               publish(createError(event.data, "player"));
             }
-          }
-        });
+        };
+
+        if (clientReferrer) {
+          // Android WebView cần widget_referrer là định danh HTTPS ổn định của
+          // ứng dụng. Tạo iframe trước để IFrame API không ghi đè tham số này.
+          const playerUrl = new URL(`https://www.youtube.com/embed/${encodeURIComponent(currentVideoId)}`);
+          playerUrl.searchParams.set("playsinline", "1");
+          playerUrl.searchParams.set("rel", "0");
+          playerUrl.searchParams.set("controls", "1");
+          playerUrl.searchParams.set("fs", "1");
+          playerUrl.searchParams.set("enablejsapi", "1");
+          playerUrl.searchParams.set("origin", window.location.origin);
+          playerUrl.searchParams.set("widget_referrer", clientReferrer);
+
+          const playerFrame = document.createElement("iframe");
+          playerFrame.id = "youtube-player-frame";
+          playerFrame.src = playerUrl.toString();
+          playerFrame.referrerPolicy = "strict-origin-when-cross-origin";
+          playerFrame.allow = "autoplay; encrypted-media; fullscreen";
+          playerFrame.allowFullscreen = true;
+          playerFrame.setAttribute("frameborder", "0");
+          playerFrame.style.width = "100%";
+          playerFrame.style.height = "100%";
+          playerFrame.style.display = "block";
+          document.getElementById("player").replaceChildren(playerFrame);
+          player = new YT.Player("youtube-player-frame", { events });
+        } else {
+          // Giữ nguyên đường IFrame API cũ cho iOS và các client không truyền
+          // Android referrer để hotfix Android không thay đổi hành vi iOS.
+          player = new YT.Player("player", {
+            width: "100%",
+            height: "100%",
+            videoId: currentVideoId,
+            playerVars: {
+              playsinline: 1,
+              rel: 0,
+              controls: 1,
+              fs: 1,
+              enablejsapi: 1,
+              origin: window.location.origin,
+              widget_referrer: window.location.href
+            },
+            events
+          });
+        }
         readyTimeout = window.setTimeout(() => {
           publish(createError("bridge-onready-timeout", "player-ready"));
         }, 11000);
