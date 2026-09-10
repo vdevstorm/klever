@@ -107,7 +107,7 @@
           state: player && typeof player.getPlayerState === "function" ? player.getPlayerState() : -1,
           position: player && player.getCurrentTime ? player.getCurrentTime() : 0,
           duration: player && player.getDuration ? player.getDuration() : 0,
-          videoId: resolvePlayerVideoId(target || player),
+          videoId: isAndroidClient ? resolvePlayerVideoId(target || player) : currentVideoId,
           error: error || null
         });
       }
