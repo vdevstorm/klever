@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedAtUtc": "2026-09-05T08:32:41Z",
-  "activePlaybackProfile": "compliance",
+  "updatedAtUtc": "2026-11-11T00:52:17Z",
+  "activePlaybackProfile": "enhanced",
   "playbackProfiles": {
     "compliance": {
       "youtubeComplianceMode": true,
